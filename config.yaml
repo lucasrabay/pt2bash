@@ -1,0 +1,33 @@
+# Configuration file for pt2bash project
+
+# Dataset Configuration
+dataset:
+  name: "jiacheng-ye/nl2bash"
+  output_dir: "data"
+
+# Translation Model Configuration
+translation:
+  model_name: "Helsinki-NLP/opus-mt-tc-big-en-pt"
+  batch_size: 16
+  max_length: 512
+  source_language: "en"
+  target_language: "pt"
+
+# Processing Configuration
+processing:
+  device_priority: ["cuda", "mps", "cpu"]
+  batch_size: 16
+  max_length: 512
+
+# Output Configuration
+output:
+  filename_template: "pt2bash_{split}.json"
+  show_samples: 3
+
+# Evaluation Configuration
+evaluation:
+  model_path: "models/ptt5-base-portuguese-vocab-finetuned-nl2bash"
+  data_path: "data/pt2bash_test.json"
+  task_prefix: "traduza para bash: "
+  batch_size: 16
+  max_new_tokens: 128
